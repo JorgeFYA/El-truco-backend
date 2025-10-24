@@ -55,7 +55,7 @@ public class Recipe {
 
         String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
 
-        String noAccents = normalized.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
+        String noAccents = normalized.replaceAll("\\p{InCombiningDiacriticalMarks}", "");
 
         String lower = noAccents.toLowerCase();
 
