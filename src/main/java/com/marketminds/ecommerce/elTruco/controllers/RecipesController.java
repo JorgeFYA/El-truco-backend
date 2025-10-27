@@ -35,12 +35,11 @@ public class RecipesController {
     @GetMapping({"", "/"})
     public List<Recipe> getRecipeList () {
         // Usa el repositorio para obtener todas las recetas de MySQL
-        // List<Recipe> recipes = repo.findAll();
         // Devuelve la lista. Spring Boot se encarga de convertir List<Recipe> a JSON.
         return repo.findAll();
     }
 
-    // Endpoint para mostrar recetas individuales
+    // Endpoint para mostrar recetas individuales, localhost:8080/recipes/{slug}
     @GetMapping("/{slug}")
     public Recipe getRecipeBySlug(@PathVariable String slug) {
 
@@ -54,6 +53,7 @@ public class RecipesController {
         ));
     }
 
+    // Este metodo maneja las peticiones POST a: localhost:8080/recipes
     @PostMapping({"", "/"})
     public ResponseEntity<Recipe> addRecipe(@Valid @RequestBody RecipeDto recipeDto) {
 
@@ -90,6 +90,7 @@ public class RecipesController {
         }
     }
 
+    // Este metodo maneja las peticiones POST para subida/actualización de imagen, localhost:8080/recipes/{id}/upload-image
     @PostMapping("/{id}/upload-image")
     public ResponseEntity<Recipe> uploadImage(@PathVariable Long id, @RequestParam("image")MultipartFile file) {
         Recipe recipe = repo.findById(id).orElseThrow(() -> new ResponseStatusException(
@@ -100,7 +101,7 @@ public class RecipesController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Archivo de imagen vacío");
         }
 
-        String storageFilename = "";
+        String storageFilename;
         String uploadDir = "public/images/recipes/";
 
         try {
@@ -138,6 +139,7 @@ public class RecipesController {
         return ResponseEntity.ok(updateRecipe);
     }
 
+    // Este metodo maneja las peticiones PUT a: localhost:8080/recipes
     @PutMapping("/{id}")
     public ResponseEntity<Recipe> updateRecipe( @PathVariable Long id, @Valid @RequestBody RecipeDto recipeDto) {
 
@@ -169,6 +171,33 @@ public class RecipesController {
 
         Recipe updatedRecipe = repo.save(recipe);
         return ResponseEntity.ok(updatedRecipe);
+    }
+
+    // Este metodo maneja las peticiones DELETE a: localhost:8080/recipes
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Recipe> deleteRecipe( @PathVariable Long id) {
+        Recipe recipe = repo.findById(id).orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Receta con ID '" + id + "' no encontrada"
+        ));
+
+        String uploadDir = "public/images/recipes/";
+        String oldImageFilename = recipe.getImageFilename();
+
+        if (oldImageFilename != null && !oldImageFilename.isEmpty()) {
+            Path oldImagePath = Paths.get(uploadDir + oldImageFilename);
+
+            try {
+
+                Files.deleteIfExists(oldImagePath);
+            } catch (Exception e) {
+
+                System.err.println("Error al eliminar la imagen: " + oldImagePath + " - " + e.getMessage());
+            }
+        }
+
+        repo.delete(recipe);
+
+        return ResponseEntity.ok(recipe);
     }
 
 }
