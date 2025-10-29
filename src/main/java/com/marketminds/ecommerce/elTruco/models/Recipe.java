@@ -3,8 +3,10 @@ package com.marketminds.ecommerce.elTruco.models;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -32,15 +34,20 @@ public class Recipe {
 
     private String category;
 
+    @Column(nullable = false)
+    private boolean active = true;
+
     // RELACIONES 1:N
     // Un cambio en la receta afecta a los ingredientes (CASCADE)
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ingredient> ingredients;
+    @SQLRestriction("active = true")
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     // @OrderBy para que los pasos se carguen en el orden correcto
+    @SQLRestriction("active = true")
     @OrderBy("stepOrder ASC")
-    private List<Step> steps;
+    private List<Step> steps = new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;
@@ -48,7 +55,7 @@ public class Recipe {
         this.slug = slugify(name);
     }
 
-    private String slugify(String input) {
+    public String slugify(String input) {
         if (input == null || input.isEmpty()) {
             return "";
         }
