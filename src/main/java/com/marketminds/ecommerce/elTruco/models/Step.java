@@ -28,4 +28,7 @@ public class Step {
     @JoinColumn(name = "recipe_id", nullable = false) // fk
     @JsonIgnore // Ignora a la Receta al convertir pasos a JSON, porque la Receta principal ya se está convirtiendo a sí misma.
     private Recipe recipe;
+
+    @Column(nullable = false)
+    private boolean active = true;
 }

@@ -15,7 +15,7 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 255)
+    @Column(nullable = false)
     private String ingredientText;
 
     // RELACIÓN N:1 con Recipe
@@ -24,4 +24,7 @@ public class Ingredient {
     @JoinColumn(name = "recipe_id", nullable = false) // Mapea la clave foránea (FK)
     @JsonIgnore // Ignora a la Receta al convertir ingredientes a JSON, porque la Receta principal ya se está convirtiendo a sí misma.
     private Recipe recipe;
+
+    @Column(nullable = false)
+    private boolean active = true;
 }
