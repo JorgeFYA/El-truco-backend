@@ -1,4 +1,4 @@
-package com.marketminds.ecommerce.elTruco.models;
+package com.marketminds.ecommerce.elTruco.dtos;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
