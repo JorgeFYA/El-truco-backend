@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class StepDto {
+public class StepsDto {
 
     @NotNull(message = "El número de paso es requerido")
     @Min(value = 1, message = "El número de paso debe ser al menos 1")

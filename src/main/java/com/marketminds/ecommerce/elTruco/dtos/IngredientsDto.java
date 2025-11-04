@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class IngredientDto {
+public class IngredientsDto {
 
     @NotEmpty(message = "El texto del ingrediente no puede estar vacío")
     private String ingredientText;

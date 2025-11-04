@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class RecipeDto {
+public class RecipesDto {
 
     private String slug;
 
@@ -31,10 +31,10 @@ public class RecipeDto {
 
     @Valid
     @NotEmpty(message = "La receta debe tener al menos un ingrediente")
-    private List<IngredientDto> ingredients;
+    private List<IngredientsDto> ingredients;
 
     @Valid
     @NotEmpty(message = "La receta debe tener al menos un paso")
-    private List<StepDto> steps;
+    private List<StepsDto> steps;
 
 }
