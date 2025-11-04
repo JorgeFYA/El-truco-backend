@@ -2,17 +2,22 @@ package com.marketminds.ecommerce.elTruco.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "steps")
-public class Step {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Steps {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, unique = true)
     private Long id;
 
     // mapea a la columna 'orden' o 'step_order'
@@ -27,7 +32,7 @@ public class Step {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recipe_id", nullable = false) // fk
     @JsonIgnore // Ignora a la Receta al convertir pasos a JSON, porque la Receta principal ya se está convirtiendo a sí misma.
-    private Recipe recipe;
+    private Recipes recipe;
 
     @Column(nullable = false)
     private boolean active = true;

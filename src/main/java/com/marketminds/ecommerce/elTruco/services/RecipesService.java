@@ -1,13 +1,13 @@
 package com.marketminds.ecommerce.elTruco.services;
 
-import com.marketminds.ecommerce.elTruco.dtos.IngredientDto;
-import com.marketminds.ecommerce.elTruco.dtos.RecipeDto;
-import com.marketminds.ecommerce.elTruco.dtos.StepDto;
-import com.marketminds.ecommerce.elTruco.models.Ingredient;
-import com.marketminds.ecommerce.elTruco.models.Recipe;
-import com.marketminds.ecommerce.elTruco.models.Step;
+import com.marketminds.ecommerce.elTruco.dtos.IngredientsDto;
+import com.marketminds.ecommerce.elTruco.dtos.RecipesDto;
+import com.marketminds.ecommerce.elTruco.dtos.StepsDto;
+import com.marketminds.ecommerce.elTruco.models.Ingredients;
+import com.marketminds.ecommerce.elTruco.models.Recipes;
+import com.marketminds.ecommerce.elTruco.models.Steps;
 import com.marketminds.ecommerce.elTruco.repositories.RecipesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,21 +23,17 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class RecipesService {
 
     private final RecipesRepository repo;
 
-    @Autowired
-    public RecipesService(RecipesRepository repo) {
-        this.repo = repo;
-    }
-
-    public List<Recipe> getAllActive() {
+    public List<Recipes> getAllActive() {
         return repo.findAllActive();
     }
 
-    public Recipe getBySlug(String slug) {
-        Recipe recipe = repo.findBySlug(slug)
+    public Recipes getBySlug(String slug) {
+        Recipes recipe = repo.findBySlug(slug)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Receta no encontrada con slug: " + slug));
 
@@ -49,17 +45,17 @@ public class RecipesService {
         return recipe;
     }
 
-    public Recipe getByIdAdmin(Long id) {
+    public Recipes getByIdAdmin(Long id) {
         return repo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Receta no encontrada con ID: " + id));
     }
 
-    public Recipe createRecipe(RecipeDto dto) {
-        String slug = new Recipe().slugify(dto.getName());
-        Recipe recipe = repo.findBySlug(slug)
+    public Recipes createRecipe(RecipesDto dto) {
+        String slug = new Recipes().slugify(dto.getName());
+        Recipes recipe = repo.findBySlug(slug)
                 .filter(r -> !r.isActive())
-                .orElse(new Recipe());
+                .orElse(new Recipes());
 
         recipe.setName(dto.getName());
         recipe.setShortDescription(dto.getShortDescription());
@@ -72,8 +68,8 @@ public class RecipesService {
         return repo.save(recipe);
     }
 
-    public Recipe updateRecipe(Long id, RecipeDto dto) {
-        Recipe recipe = repo.findById(id)
+    public Recipes updateRecipe(Long id, RecipesDto dto) {
+        Recipes recipe = repo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Receta con ID '" + id + "' no encontrada"));
 
@@ -87,8 +83,8 @@ public class RecipesService {
         return repo.save(recipe);
     }
 
-    public Recipe uploadImage(Long id, MultipartFile file) {
-        Recipe recipe = repo.findById(id)
+    public Recipes uploadImage(Long id, MultipartFile file) {
+        Recipes recipe = repo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Receta con ID '" + id + "' no encontrada"));
 
@@ -122,8 +118,8 @@ public class RecipesService {
         return repo.save(recipe);
     }
 
-    public Recipe deleteRecipe(Long id) {
-        Recipe recipe = repo.findById(id)
+    public Recipes deleteRecipe(Long id) {
+        Recipes recipe = repo.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Receta no encontrada"));
 
@@ -144,19 +140,19 @@ public class RecipesService {
     }
 
     // Lógica de sincronización de pasos e ingredientes
-    private void updateRecipeDetails(Recipe recipe, RecipeDto dto) {
-        List<Ingredient> ingredients = recipe.getIngredients();
+    private void updateRecipeDetails(Recipes recipe, RecipesDto dto) {
+        List<Ingredients> ingredients = recipe.getIngredients();
         int size = Math.min(ingredients.size(), dto.getIngredients().size());
 
         for (int i = 0; i < size; i++) {
-            Ingredient ing = ingredients.get(i);
+            Ingredients ing = ingredients.get(i);
             ing.setIngredientText(dto.getIngredients().get(i).getIngredientText());
             ing.setActive(true);
         }
 
         for (int i = size; i < dto.getIngredients().size(); i++) {
-            IngredientDto ingDto = dto.getIngredients().get(i);
-            Ingredient newIng = new Ingredient();
+            IngredientsDto ingDto = dto.getIngredients().get(i);
+            Ingredients newIng = new Ingredients();
             newIng.setIngredientText(ingDto.getIngredientText());
             newIng.setRecipe(recipe);
             newIng.setActive(true);
@@ -167,25 +163,25 @@ public class RecipesService {
             ingredients.get(i).setActive(false);
         }
 
-        List<Step> steps = recipe.getSteps();
+        List<Steps> steps = recipe.getSteps();
         size = Math.min(steps.size(), dto.getSteps().size());
 
         for (int i = 0; i < size; i++) {
-            Step step = steps.get(i);
-            StepDto dtoStep = dto.getSteps().get(i);
+            Steps step = steps.get(i);
+            StepsDto dtoStep = dto.getSteps().get(i);
             step.setInstruction(dtoStep.getInstruction());
             step.setStepOrder(dtoStep.getStepOrder());
             step.setActive(true);
         }
 
         for (int i = size; i < dto.getSteps().size(); i++) {
-            StepDto stepDto = dto.getSteps().get(i);
-            Step newStep = new Step();
-            newStep.setInstruction(stepDto.getInstruction());
-            newStep.setStepOrder(stepDto.getStepOrder());
-            newStep.setRecipe(recipe);
-            newStep.setActive(true);
-            steps.add(newStep);
+            StepsDto stepDto = dto.getSteps().get(i);
+            Steps newSteps = new Steps();
+            newSteps.setInstruction(stepDto.getInstruction());
+            newSteps.setStepOrder(stepDto.getStepOrder());
+            newSteps.setRecipe(recipe);
+            newSteps.setActive(true);
+            steps.add(newSteps);
         }
 
         for (int i = dto.getSteps().size(); i < steps.size(); i++) {

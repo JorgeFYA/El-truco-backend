@@ -1,7 +1,9 @@
 package com.marketminds.ecommerce.elTruco.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLRestriction;
 
@@ -9,14 +11,17 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "recipes")
-public class Recipe {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Recipes {
 
     @Id // pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
+    @Column(nullable = false, unique = true)
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -25,9 +30,10 @@ public class Recipe {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private String shortDescription;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", nullable = false)
     private String fullDescription;
 
     private String imageFilename;
@@ -41,13 +47,13 @@ public class Recipe {
     // Un cambio en la receta afecta a los ingredientes (CASCADE)
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     @SQLRestriction("active = true")
-    private List<Ingredient> ingredients = new ArrayList<>();
+    private List<Ingredients> ingredients = new ArrayList<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     // @OrderBy para que los pasos se carguen en el orden correcto
     @SQLRestriction("active = true")
     @OrderBy("stepOrder ASC")
-    private List<Step> steps = new ArrayList<>();
+    private List<Steps> steps = new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;
