@@ -30,6 +30,6 @@ public class Ingredients {
     @JsonIgnore // Ignora a la Receta al convertir ingredientes a JSON, porque la Receta principal ya se está convirtiendo a sí misma.
     private Recipes recipe;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     private boolean active = true;
 }
