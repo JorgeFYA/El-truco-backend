@@ -40,7 +40,7 @@ public class Recipes {
 
     private String category;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT TRUE")
     private boolean active = true;
 
     // RELACIONES 1:N
