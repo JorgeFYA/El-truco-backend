@@ -22,11 +22,6 @@ public class DirectionsController {
     private final DirectionsService directionsService;
 
     @GetMapping
-    public List<Directions> getAllDirections() {
-        return directionsService.getAllDirections();
-    }
-
-    @GetMapping
     public List<Directions> getDirectionsByUserId(@RequestParam(required = true) Long userId){
         return this.directionsService.getDirectionsByUserId(userId);
     }
