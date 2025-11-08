@@ -60,6 +60,27 @@ INSERT INTO steps (recipe_id, `step_order`, instruction) VALUES
 (4, 3, 'Continúa batiendo hasta que la mayonesa espese y adquiera consistencia.'),
 (4, 4, 'Sazona con sal y disfruta.');
 
+-- Insertar productos en la tabla products
+INSERT INTO products (name, description, base_price, category, main_image, active) VALUES
+('Huevos Orgánicos', 'Nuestros huevos provienen de gallinas criadas con mínimo uso de químicos, en un ambiente cuidado y natural.', 24.00, 'huevos', 'img/sixeggs.webp', true),
+('Abono Orgánico', 'Abono orgánico elaborado a partir del estiércol compostado de gallinas.', 80.00, 'abono', 'img/abono.webp', true),
+('Lote de Gallinas', 'Gallinas de postura de alta calidad', 280.00, 'aves', 'img/chicken2.webp', true);
+
+-- Ingredientes para ID 1: Huevos Revueltos
+INSERT INTO product_variant (product_id, name, price, image, stock) VALUES
+(1, 'Paquete de 6 Huevos', 24.00, '../img/sixeggs.webp', 100),
+(1, 'Paquete de 12 Huevos', 40.00, '../img/eggs12.webp', 80),
+(1, 'Paquete de 30 Huevos', 95.00, '../img/eggs30.webp', 50),
+(1, 'Caja de 320 Huevos', 980.00, '../img/eggs12.webp', 20),
+(2, 'Bolsa de 1 Kg', 80.00, '../img/abono.webp', 200),
+(2, 'Bolsaza de 6 Kg', 280.00, '../img/abono.webp', 100),
+(2, 'Costal de 10 Kg', 320.00, '../img/abono.webp', 80),
+(2, 'Costal de 15 Kg', 400.00, '../img/abono.webp', 60),
+(2, 'Costal de 25 Kg', 620.00, '../img/abono.webp', 40),
+(3, 'Lote de 25 Aves', 280.00, '../img/chicken2.webp', 15),
+(3, 'Lote de 50 Aves', 500.00, '../img/chicken2.webp', 10),
+(3, 'Lote de 100 Aves', 950.00, '../img/chicken2.webp', 5);
+
 -- Suscripciones de prueba para la tabla newsletter
 INSERT INTO newsletter (email, active) VALUES
 ('maria.gomez@example.com', TRUE),
