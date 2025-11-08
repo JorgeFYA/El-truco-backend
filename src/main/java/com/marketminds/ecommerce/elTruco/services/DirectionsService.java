@@ -14,10 +14,6 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class DirectionsService {
-    /**
-     * Directions de Josue:
-     * https://gist.github.com/Omiced/8296f4a9459e8e86faee900cdce8229f
-     */
 
     private final DirectionsRepository directionsRepository;
     private final UsersRepository usersRepository;

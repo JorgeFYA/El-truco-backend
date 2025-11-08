@@ -14,10 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 public class DirectionsController {
 
-    /**
-     * Directions controller de Josue:
-     * https://gist.github.com/Omiced/eeff0bc70d54b59d6499c91c4adb3283
-     */
 
     private final DirectionsService directionsService;
 

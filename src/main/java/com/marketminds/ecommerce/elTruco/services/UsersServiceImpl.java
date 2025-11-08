@@ -1,8 +1,12 @@
 package com.marketminds.ecommerce.elTruco.services;
 
+import com.marketminds.ecommerce.elTruco.models.Role;
 import com.marketminds.ecommerce.elTruco.models.Users;
 import com.marketminds.ecommerce.elTruco.repositories.UsersRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +15,9 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-
-public class UsersServiceImpl implements UsersService {
-    public UsersRepository usersRepository;
-    public PasswordEncoder passwordEncoder;
+public class UsersServiceImpl implements UsersService, UserDetailsService {
+    private final UsersRepository usersRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public List<Users> getAllUsers() {
@@ -32,6 +35,8 @@ public class UsersServiceImpl implements UsersService {
     public Users addUser(Users user) {
         String encriptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encriptedPassword);
+
+        user.setRole(Role.USER);
 
         return usersRepository.save(user);
     }
@@ -53,6 +58,7 @@ public class UsersServiceImpl implements UsersService {
         Users userDB = optionalUser.get();
         if (updatedUser.getName() != null) userDB.setName(updatedUser.getName());
         if (updatedUser.getLastName() != null) userDB.setLastName(updatedUser.getLastName());
+        if (updatedUser.getPhoneNumber() != null) userDB.setPhoneNumber(updatedUser.getPhoneNumber());
         if (updatedUser.getEmail() != null) userDB.setEmail(updatedUser.getEmail());
         if (updatedUser.getPassword() != null) userDB.setPassword(passwordEncoder.encode(updatedUser.getPassword()));
 
@@ -66,5 +72,13 @@ public class UsersServiceImpl implements UsersService {
 
         // devuelve true or false si la contraseña entrante coincide con la almacenada en la db
         return passwordEncoder.matches(user.getPassword(), optionalUser.get().getPassword());
+    }
+
+    // Spring Security lo usa para hacer la carga de los usuarios.
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        return usersRepository.findByEmail(email).orElseThrow(
+                () -> new UsernameNotFoundException("No se encontró el usuario con el email: " + email)
+        );
     }
 }
