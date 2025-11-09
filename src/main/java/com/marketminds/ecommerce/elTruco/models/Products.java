@@ -32,7 +32,7 @@ public class Products {
     @Column(name = "category", nullable = false)
     private String category;
 
-    @Column(name = "main_image", nullable = false)
+    @Column(name = "main_image")
     private String mainImage;
 
     @Column(name = "active", nullable = false)
