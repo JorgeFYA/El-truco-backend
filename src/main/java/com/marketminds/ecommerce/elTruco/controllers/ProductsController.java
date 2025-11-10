@@ -3,7 +3,9 @@ package com.marketminds.ecommerce.elTruco.controllers;
 import com.marketminds.ecommerce.elTruco.models.Products;
 import com.marketminds.ecommerce.elTruco.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -31,6 +33,12 @@ public class ProductsController {
     @PostMapping
     public Products addProduct(@RequestBody Products product){
         return productsService.addProduct(product);
+    }
+
+    @PostMapping("/{productId}/upload-image")
+    public ResponseEntity<Products> uploadImage(@PathVariable("productId") Long id, @RequestParam("image") MultipartFile file) {
+        Products updated = productsService.uploadImage(id, file);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping (path = "/{productId}")

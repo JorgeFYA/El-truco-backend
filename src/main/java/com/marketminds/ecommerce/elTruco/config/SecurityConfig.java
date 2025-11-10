@@ -66,9 +66,13 @@ public class SecurityConfig {
 
                         // Productos
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/productVariants/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/productVariants/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/productVariants/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/productVariants/**").hasRole("ADMIN")
 
                         // Recetas
                         .requestMatchers(HttpMethod.GET, "/api/recipes/**").permitAll()
