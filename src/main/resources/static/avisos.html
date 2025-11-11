@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos Legales - El Truco</title>
+    <!-- FAVICON -->
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+    <!-- Styles CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+  </head>
+  <body class="bg-pattern-normal">
+    <!--NavBar-->
+    <div class="navbar-container sticky-top py-3">
+      <nav class="navbar navbar-expand-lg navbar-dark navbar-farm px-4">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/LogoB.svg" alt="Logo de El Truco" class="navbar-logo">
+        </a>
+
+        <a href="#" class="navbar-icon ms-auto me-3 d-lg-none" aria-label="Ver carrito de compras">
+            <i class="bi bi-basket2-fill fs-5"></i>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav navbar-nav-absolute-centered">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Acerca de Nosotros</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Blog
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="recipes.html">Recetas</a></li>
+                <li><a class="dropdown-item" href="our-chickens.html">Nuestras Gallinas</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacto</a>
+            </li>
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="login.html">Usuario</a>
+            </li>
+          </ul>
+          
+          <div class="d-none d-lg-flex align-items-center ms-auto">
+            <a href="login.html" class="me-3 navbar-icon" aria-label="Iniciar sesión">
+              <i class="bi bi-person-fill fs-5"></i>
+            </a>
+            <!-- Ícono carrito escritorio -->
+            <a href="cart.html" class="navbar-icon position-relative" aria-label="Ver carrito de compras">
+              <i class="bi bi-basket2-fill fs-5"></i>
+              <span id="cartCountDesktop" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!--END NavBar-->
+
+    <section class="container my-5 py-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          
+          <!-- Header -->
+          <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">AVISOS LEGALES</h2>
+            <p class="text-muted">Información importante sobre nuestras políticas y términos</p>
+          </div>
+
+          <!-- Accordion Avisos Legales -->
+          <div class="accordion" id="avisosAccordion">
+            
+            <!-- AVISO DE PRIVACIDAD -->
+             <div id="seccion-privacidad" class="accordion-item mb-3 border-0 rounded-3 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#avisoPrivacidad">
+                  <i class="bi bi-shield-lock me-2"></i> Aviso de Privacidad
+                </button>
+              </h2>
+              <div id="avisoPrivacidad" class="accordion-collapse collapse" data-bs-parent="#avisosAccordion">
+                <div class="accordion-body">
+                  
+                  <h5 class="fw-bold mt-3 mb-2">1. Responsable del Tratamiento de Datos</h5>
+                  <p><strong>El Truco - Producción Avícola Orgánica</strong>, con domicilio en 123 Avícola Oriental, Ciudad de México, MX 051200, es responsable del tratamiento de sus datos personales.</p>
+
+                  <h5 class="fw-bold mt-3 mb-2">2. Datos Personales que Recabamos</h5>
+                  <p>Para las finalidades señaladas en este aviso de privacidad, podemos recabar sus datos personales de distintas formas:</p>
+                  <ul>
+                    <li>Nombre completo</li>
+                    <li>Correo electrónico</li>
+                    <li>Número telefónico</li>
+                    <li>Dirección de entrega</li>
+                    <li>Datos de facturación (cuando sea solicitado)</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">3. Finalidades del Tratamiento</h5>
+                  <p>Los datos personales que recabamos serán utilizados para las siguientes finalidades:</p>
+                  <ul>
+                    <li>Procesar y gestionar sus pedidos</li>
+                    <li>Realizar entregas de productos</li>
+                    <li>Enviar notificaciones sobre el estado de su pedido</li>
+                    <li>Emitir facturas y comprobantes fiscales</li>
+                    <li>Atender sus solicitudes, dudas y comentarios</li>
+                    <li>Enviar promociones y ofertas (con su consentimiento)</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">4. Transferencia de Datos</h5>
+                  <p>Sus datos personales pueden ser compartidos con:</p>
+                  <ul>
+                    <li>Empresas de paquetería para realizar entregas</li>
+                    <li>Instituciones financieras para procesar pagos</li>
+                    <li>Autoridades competentes cuando sea legalmente requerido</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">5. Derechos ARCO</h5>
+                  <p>Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos personales. Para ejercer estos derechos, puede contactarnos:</p>
+                  <ul>
+                    <li><strong>Email:</strong> contacto@eltruco.com.mx</li>
+                    <li><strong>Teléfono:</strong> 01-800-MarketMind</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">6. Seguridad de la Información</h5>
+                  <p>Implementamos medidas de seguridad administrativas, técnicas y físicas para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso no autorizado.</p>
+
+                  <p class="mt-4 mb-0"><small><strong>Última actualización:</strong> Octubre 2025</small></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- POLÍTICA DE DEVOLUCIÓN -->
+            <div id="seccion-devolucion" class="accordion-item mb-3 border-0 rounded-3 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#politicaDevolucion">
+                  <i class="bi bi-arrow-return-left me-2"></i> Política de Devolución
+                </button>
+              </h2>
+              <div id="politicaDevolucion" class="accordion-collapse collapse" data-bs-parent="#avisosAccordion">
+                <div class="accordion-body">
+                  
+                  <h5 class="fw-bold mt-3 mb-2">1. Condiciones Generales</h5>
+                  <p>En <strong>El Truco</strong> nos comprometemos a entregar productos de la más alta calidad. Si no está satisfecho con su compra, puede solicitar una devolución o cambio bajo las siguientes condiciones.</p>
+
+                  <h5 class="fw-bold mt-3 mb-2">2. Productos Elegibles para Devolución</h5>
+                  <ul>
+                    <li><strong>Huevos orgánicos:</strong> Solo si llegan rotos o en mal estado</li>
+                    <li><strong>Pollo orgánico:</strong> Si presenta signos de descomposición o empaque dañado</li>
+                    <li><strong>Abono orgánico:</strong> Si el empaque está dañado o el producto no corresponde con lo solicitado</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">3. Plazo para Solicitar Devolución</h5>
+                  <p>Tiene <strong>24 horas</strong> posteriores a la recepción del producto para notificar cualquier problema. Después de este plazo, no se aceptarán devoluciones.</p>
+
+                  <h5 class="fw-bold mt-3 mb-2">4. Proceso de Devolución</h5>
+                  <ol>
+                    <li>Contactar a nuestro servicio al cliente por teléfono, WhatsApp o correo electrónico</li>
+                    <li>Proporcionar número de pedido y descripción del problema</li>
+                    <li>Enviar fotografías del producto si es necesario</li>
+                    <li>Nuestro equipo evaluará su solicitud en un máximo de 48 horas</li>
+                    <li>Una vez aprobada, se coordinará la reposición del producto o el reembolso</li>
+                  </ol>
+
+                  <h5 class="fw-bold mt-3 mb-2">5. Opciones de Solución</h5>
+                  <p>En caso de que su devolución sea aprobada, podrá elegir entre:</p>
+                  <ul>
+                    <li><strong>Reposición del producto:</strong> Le enviaremos un producto nuevo sin costo adicional</li>
+                    <li><strong>Reembolso total:</strong> Le devolveremos el importe pagado en un plazo de 5 a 7 días hábiles</li>
+                    <li><strong>Crédito para futura compra:</strong> Puede usar el monto como crédito con un 10% adicional de bonificación</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">6. Excepciones</h5>
+                  <p>No se aceptarán devoluciones en los siguientes casos:</p>
+                  <ul>
+                    <li>Productos dañados por mal manejo del cliente después de la entrega</li>
+                    <li>Solicitudes realizadas fuera del plazo establecido (24 horas)</li>
+                    <li>Productos utilizados o consumidos parcialmente</li>
+                    <li>Cambio de opinión o preferencias del cliente</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">7. Contacto para Devoluciones</h5>
+                  <ul>
+                    <li><strong>WhatsApp:</strong> Para atención inmediata</li>
+                    <li><strong>Teléfono:</strong> 01-800-MarketMind</li>
+                    <li><strong>Email:</strong> contacto@eltruco.com.mx</li>
+                  </ul>
+
+                  <p class="mt-4 mb-0"><small><strong>Última actualización:</strong> Octubre 2025</small></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TÉRMINOS Y CONDICIONES -->
+            <div id="seccion-terminos" class="accordion-item mb-3 border-0 rounded-3 shadow-sm">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#terminosCondiciones">
+                  <i class="bi bi-file-text me-2"></i> Términos y Condiciones
+                </button>
+              </h2>
+              <div id="terminosCondiciones" class="accordion-collapse collapse" data-bs-parent="#avisosAccordion">
+                <div class="accordion-body">
+                  
+                  <h5 class="fw-bold mt-3 mb-2">1. Aceptación de Términos</h5>
+                  <p>Al acceder y utilizar el sitio web de <strong>El Truco</strong>, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con alguna parte de estos términos, no debe utilizar nuestro sitio web o servicios.</p>
+
+                  <h5 class="fw-bold mt-3 mb-2">2. Uso del Sitio Web</h5>
+                  <p>El usuario se compromete a utilizar el sitio web de manera responsable y conforme a la legislación vigente. Queda prohibido:</p>
+                  <ul>
+                    <li>Realizar actividades fraudulentas o ilícitas</li>
+                    <li>Intentar acceder a áreas restringidas del sistema</li>
+                    <li>Interferir con el funcionamiento del sitio</li>
+                    <li>Utilizar el sitio para difundir contenido inapropiado</li>
+                    <li>Copiar, reproducir o distribuir contenido sin autorización</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">3. Productos y Servicios</h5>
+                  <p>Todos nuestros productos son:</p>
+                  <ul>
+                    <li>100% orgánicos y naturales</li>
+                    <li>Criados con respeto al bienestar animal</li>
+                    <li>Sujetos a disponibilidad de temporada</li>
+                    <li>Frescos y de producción local</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">4. Precios y Pagos</h5>
+                  <ul>
+                    <li>Todos los precios están expresados en pesos mexicanos (MXN)</li>
+                    <li>Los precios pueden cambiar sin previo aviso</li>
+                    <li>El precio final incluye impuestos aplicables</li>
+                    <li>Aceptamos tarjetas de crédito/débito, transferencias bancarias y efectivo</li>
+                    <li>Los pagos en línea están procesados de forma segura</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">5. Envíos y Entregas</h5>
+                  <ul>
+                    <li>Realizamos entregas en zona local sin costo adicional (pedido mínimo aplicable)</li>
+                    <li>Envíos nacionales mediante paquetería especializada</li>
+                    <li>Los tiempos de entrega son estimados y pueden variar</li>
+                    <li>No nos hacemos responsables por retrasos causados por la paquetería</li>
+                    <li>Es responsabilidad del cliente proporcionar una dirección correcta</li>
+                  </ul>
+
+                  <h5 class="fw-bold mt-3 mb-2">6. Propiedad Intelectual</h5>
+                  <p>Todo el contenido del sitio web, incluyendo textos, imágenes, logos, diseños y código fuente, es propiedad de <strong>El Truco</strong> y está protegido por las leyes de propiedad intelectual.</p>
+
+                  <h5 class="fw-bold mt-3 mb-2">7. Modificaciones</h5>
+                  <p>Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación en el sitio web.</p>
+
+                  <h5 class="fw-bold mt-3 mb-2">8. Legislación Aplicable</h5>
+                  <p>Estos términos se rigen por las leyes de los Estados Unidos Mexicanos. Cualquier disputa será resuelta en los tribunales competentes de la Ciudad de México.</p>
+
+                  <h5 class="fw-bold mt-3 mb-2">9. Contacto</h5>
+                  <ul>
+                    <li><strong>Dirección:</strong> 123 Avícola Oriental, Ciudad de México, MX 051200</li>
+                    <li><strong>Teléfono:</strong> 01-800-MarketMind</li>
+                    <li><strong>Email:</strong> contacto@eltruco.com.mx</li>
+                  </ul>
+
+                  <p class="mt-4 mb-0"><small><strong>Última actualización:</strong> Octubre 2025</small></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Footer -->
+          <div class="text-center mt-5 pt-4">
+    <h3 class="fw-bold mb-3">¿TIENES ALGUNA DUDA O PREGUNTA?</h3>
+    <p class="text-muted mb-4">No dudes en contactarte con nosotros, estamos para ayudarte.</p>
+    
+    <a href="faqs.html" class="btn-outline-avisos me-2">Preguntas Frecuentes</a>
+  
+    <a href="contact.html" class="btn-avisos">Contacto</a>
+    </div>
+
+        </div>
+      </div>
+    </section>
+
+<!-- FOOTER -->
+<footer class="footer mt-auto py-3 custom-footer">
+  <div class="container">
+    <div class="row align-items-start">
+      
+      <div class="col-md-4 mb-3">
+        <img src="img/footer.svg" alt="El Truco" class="mb-3" style="max-width: 160px;">
+        <p>Producimos con dedicación y respeto por la naturaleza. Huevos frescos, de calidad y libres de químicos, directo de nuestra granja a tu mesa.</p>
+        <div class="d-flex gap-3 footer-icons">
+          <a href="#"><i class="bi bi-facebook fs-4"></i></a>
+          <a href="#"><i class="bi bi-twitter-x fs-4"></i></a>
+          <a href="#"><i class="bi bi-instagram fs-4"></i></a>
+          <a href="#"><i class="bi bi-whatsapp fs-4"></i></a>
+        </div>
+      </div>
+
+      <div class="col-md-2 mb-3">
+        <h6 class="fw-bold mb-3">Información Legal</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2">
+            <a href="avisos.html#seccion-privacidad" class="text-dark text-decoration-none">
+              Aviso de Privacidad
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="avisos.html#seccion-devolucion" class="text-dark text-decoration-none">
+              Políticas de Devolución
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="avisos.html#seccion-terminos" class="text-dark text-decoration-none">
+              Términos y Condiciones
+            </a>
+          </li>
+          <li class="mb-2">
+            <a href="faqs.html" class="text-dark text-decoration-none">
+              Preguntas Frecuentes
+            </a>
+          </li>
+        </ul>
+      </div>
+
+        <div class="col-md-3 mb-2">
+  <h6 class="fw-bold">¡Contáctanos!</h6>
+  <p class="mb-2">
+    <i class="bi bi-telephone-fill me-2"></i>01-800-ElTruco
+  </p>
+  <p class="mb-2">
+    <i class="bi bi-envelope-fill me-2"></i>
+    <a href="mailto:contacto@eltruco.com.mx" class="text-dark text-decoration-none text-break">
+      contacto@eltruco.com.mx
+    </a>
+  </p>
+  <p class="mb-0">
+    <i class="bi bi-geo-alt-fill me-2"></i>123 Avícola Oriental<br>
+    <span class="ms-4">Ciudad de México, MX 051200</span>
+  </p>
+</div>
+
+      <div class="col-md-3 mb-3">
+        <h6 class="fw-bold mb-3">Newsletter</h6>
+        <form id="newsletter-form" class="mb-2">
+          <div class="input-group mb-2">
+            <input required type="email" class="form-control newsletter-input" placeholder="Tu correo electrónico">
+            <button class="btn btn-dark newsletter-btn" type="submit">
+              Suscríbete
+            </button>
+          </div>
+          <small id="newsletter-message" class="text-success d-none"></small>
+        </form>
+        <small class="footer-newsletter-text">
+          Suscríbete y recibe <strong>25% de descuento</strong> en tu primera compra, además de promociones exclusivas.
+        </small>
+      </div>
+    
+      <hr>
+    </div>
+    <div class="text-center pb-3">
+      <small>
+        Copyright © 2025. Todos los derechos reservados. 
+        <!-- <a href="https://github.com/tu-usuario/tu-repositorio" target="_blank" rel="noopener noreferrer" class="text-dark text-decoration-none">
+          <i class="bi bi-code-slash"></i> Ver código fuente
+        </a> -->
+      </small>
+    </div>
+  </div>
+</footer>
+<!-- END FOOTER -->
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/contact.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <!-- Carrito JS -->
+    <script src="js/cartController.js"></script>
+  </body>
+</html>
