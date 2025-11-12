@@ -92,7 +92,7 @@ public class RecipesService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Archivo vacío");
         }
 
-        String uploadDir = "public/images/recipes/";
+        String uploadDir = "/home/ubuntu/public/images/recipes/";
         String storageFilename = new Date().getTime() + "-" + file.getOriginalFilename();
 
         try {
@@ -129,7 +129,7 @@ public class RecipesService {
 
         if (recipe.getImageFilename() != null) {
             try {
-                Files.deleteIfExists(Paths.get("public/images/recipes/" + recipe.getImageFilename()));
+                Files.deleteIfExists(Paths.get("/home/ubuntu/public/images/recipes/" + recipe.getImageFilename()));
             } catch (IOException e) {
                 System.err.println("Error al eliminar imagen: " + e.getMessage());
             }
