@@ -67,7 +67,7 @@ public class ProductsService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Archivo vacío");
         }
 
-        String uploadDir = "src/main/resources/static/images/products/";
+        String uploadDir = "/home/ubuntu/public/images/recipes/";
         String storageFilename = new Date().getTime() + "-" + file.getOriginalFilename();
 
         try {

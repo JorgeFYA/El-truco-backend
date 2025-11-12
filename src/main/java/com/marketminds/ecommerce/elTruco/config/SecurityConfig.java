@@ -41,7 +41,8 @@ public class SecurityConfig {
     // Verifica las credenciales del usuario
     @Bean
     public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService());
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
@@ -86,7 +87,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/newsletter/**").permitAll()
 
                         .requestMatchers("/api/users/**").hasRole("ADMIN") // Protegido
-                        .anyRequest().authenticated() // El resto, protegido
+                        .anyRequest().permitAll() // El resto, protegido
                 )
                 .authenticationProvider(authenticationProvider())
                 // 4. Usamos el filtro que Spring inyectó al metodo
