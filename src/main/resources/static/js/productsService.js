@@ -335,3 +335,5 @@ updateVariantStock(variantId, quantity) {
 
 
 export const productService = new ProductService();
+
+if (typeof window !== 'undefined') window.productService = productService;

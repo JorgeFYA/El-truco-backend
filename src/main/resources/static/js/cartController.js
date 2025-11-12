@@ -80,11 +80,12 @@
       const select = collapseDiv.querySelector('select');
       if (select) {
         const variantId = select.value;
-        const { product, variant } = productService.getVariantById(variantId);
-        if (!product || !variant) {
+        const found = productService.getVariantById(variantId);
+        if (!found) {
           alert('Error: no se pudo obtener la variante seleccionada.');
           return;
         }
+        const { product, variant } = found;
 
         addToCart({
           id: variant.id,
@@ -144,7 +145,12 @@
       }
 
       const variantId = activeVariant.dataset.variantId;
-      const { product, variant } = productService.getVariantById(variantId);
+      const found = productService.getVariantById(variantId);
+      if (!found) {
+        alert('Error: no se pudo obtener la variante seleccionada.');
+        return;
+      }
+      const { product, variant } = found;
 
       if (product && variant) {
         addToCart({
